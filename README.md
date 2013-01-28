@@ -27,7 +27,7 @@ we could simply write this
         socket:on_receive(function (socket, data)
 
           socket:write(math.random(999), server.socket.WRITE_TEXT)
-            
+
         end)
       end
     }
@@ -52,6 +52,7 @@ For further information about available methods for websocket instance, see [her
 
 ####WSock:newProtocolHandler(protocolHandlerTable)
 Same as above, but instead wrap the protocol and handler in a single table. For example:
+
     local myproto = {
       echo = function (socket)
         socket:on_receive(function (socket, data)
