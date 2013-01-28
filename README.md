@@ -73,7 +73,7 @@ Same as above, but instead wrap the protocol and handler in a single table. For 
 ####WSock:ssl(cert, privKey)
 Both `cert` and `privKey` must be strings to the certificate and private key file path.
 
-####WSock:ssl(uid, guid)
+####WSock:user(uid, guid)
 Both `uid` and `guid` must be number of user id and group id.
 
 ####WSock:start()
