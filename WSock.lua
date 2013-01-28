@@ -75,11 +75,11 @@ function WSock:start ()
     self.httpHandlerFunction = nil
   end
 
-  if(type(self.uid) ~= 'string') then
+  if(type(self.uid) ~= 'number') then
     self.uid = nil
   end
 
-  if(type(self.guid) ~= 'string') then
+  if(type(self.guid) ~= 'number') then
     self.guid = nil
   end
 

@@ -47,7 +47,7 @@ This server will listen at port 9999 on 127.0.0.1 or localhost, if you connect t
 `port` must be a number ranged 1-65535, while `timeout` must be a number too in miliseconds
 
 ####WSock:newProtocolHandler(protocol, handler)
-`protocol` must be a string, while handler must be a function with a single argument to be used as new websocket instance.
+`protocol` must be a string, while handler must be a function with a single parameter to be used as new websocket instance.
 For further information about available methods for websocket instance, see [here.](https://github.com/lipp/lua-websockets#websocket-methods)
 
 ####WSock:newProtocolHandler(protocolHandlerTable)
@@ -62,6 +62,19 @@ Same as above, but instead wrap the protocol and handler in a single table. For 
         end)
       end
     }
+
+####WSock:httpHandler(handler)
+`handler` must be a function with a single parameter to be used as new websocket instance, it basically looks like this:
+
+    function (socket)
+      socket:serve_http_file('./some.html','text/html')
+    end
+
+####WSock:ssl(cert, privKey)
+Both `cert` and `privKey` must be strings to the certificate and private key file path.
+
+####WSock:ssl(uid, guid)
+Both `uid` and `guid` must be number of user id and group id.
 
 ####WSock:start()
 You need to run it after you've done with the configuration.
