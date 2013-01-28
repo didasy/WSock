@@ -30,6 +30,23 @@ function WSock:initialize (port, timeout)
   return self
 end
 
+function WSock:httpHandler (handler)
+  self.httpHandlerFunction = handler
+  return self
+end
+
+function WSock:ssl (cert, privKey)
+  self.sslCert = cert
+  self.sslPrivKey = privKey
+  return self
+end
+
+function WSock:user (uid, guid)
+  self.uid = uid
+  self.guid = guid
+  return self
+end
+
 function WSock:newProtocolHandler (protocol, handler)
 
   if(type(protocol) == 'string' and type(handler) == 'function') then
@@ -54,7 +71,32 @@ function WSock:start ()
 
   self.socket = require 'websockets'
 
+  if(type(self.httpHandlerFunction) ~= 'function') then
+    self.httpHandlerFunction = nil
+  end
+
+  if(type(self.uid) ~= 'string') then
+    self.uid = nil
+  end
+
+  if(type(self.guid) ~= 'string') then
+    self.guid = nil
+  end
+
+  if(type(self.sslCert) ~= 'string') then
+    self.sslCert = nil
+  end
+
+  if(type(self.sslPrivKey) ~= 'string') then
+    self.sslPrivKey = nil
+  end
+
   local context = self.socket.context({
+    on_http = self.httpHandlerFunction,
+    uid = self.uid,
+    guid = self.guid,
+    ssl_cert_path = self.sslCert,
+    ssl_private_key_path = self.sslPrivKey,
     port = self.port,
     protocols = self.protocols
   })
