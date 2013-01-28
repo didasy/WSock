@@ -32,9 +32,9 @@ we could simply write this
       end
     }
 
-server:newProtocolHandler(myproto)
+    server:newProtocolHandler(myproto)
 
-server:start()
+    server:start()
 
 This server will listen at port 9999 on 127.0.0.1 or localhost, if you connect to it and send something, it would respond back with a random number ranged 1-999.
 
