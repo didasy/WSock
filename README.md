@@ -64,4 +64,4 @@ Same as above, but instead wrap the protocol and handler in a single table. For 
     }
 
 ####WSock:start()
-You need to it after you've done with the configuration.
+You need to run it after you've done with the configuration.
