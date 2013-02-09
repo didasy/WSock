@@ -21,7 +21,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR TH
 
 require 'middleclass'
 
-WSock = class('WSock')
+local WSock = class('WSock')
 
 function WSock:initialize (port, timeout)
   self.port = port
@@ -105,3 +105,5 @@ function WSock:start ()
     context:service(self.timeout)
   end
 end
+
+return WSock

@@ -18,7 +18,7 @@ Example:
 To create a simple websocket server with only one protocol named 'echo',
 we could simply write this
 
-    require 'WSock'
+    local WSock = require 'WSock'
 
     local server = WSock:new(9999, 60000)
 
